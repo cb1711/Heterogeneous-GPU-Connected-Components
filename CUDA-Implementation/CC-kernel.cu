@@ -54,7 +54,7 @@ __global__ void update_states(int* parent, int* vertex_state, int n){
     int bid = blockIdx.x;
     int id = bid*blockDim.x + threadIdx.x;
     if(id < n)
-        vertex_state[id] = parent[id] == id ? 0 : 1;    
+        vertex_state[id] = parent[id] != id;    
     return;
 }
 
